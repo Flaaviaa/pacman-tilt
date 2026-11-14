@@ -2,7 +2,9 @@
 #include "mpu6050.h"
 #include "board.h"
 
-#define MPU_ADDR    0x68U   // AD0 em GND
+// 0x68 com AD0 em GND, 0x69 com AD0 em 3V3 (tenta os dois)
+static uint8_t mpu_addr = 0x68U;
+#define MPU_ADDR mpu_addr
 
 #define REG_CONFIG       0x1AU
 #define REG_ACCEL_CONFIG 0x1CU
@@ -82,8 +84,21 @@ static void i2c_init(void)
     I2C1->CR1 = I2C_CR1_PE;
 }
 
+// Espera o STOP anterior terminar antes de um novo START
+static int i2c_wait_idle(void)
+{
+    uint32_t t = I2C_TIMEOUT;
+
+    while ((I2C1->CR1 & I2C_CR1_STOP) || (I2C1->SR2 & I2C_SR2_BUSY))
+        if (--t == 0U)
+            return -1;
+
+    return 0;
+}
+
 static int i2c_write_reg(uint8_t reg, uint8_t value)
 {
+    if (i2c_wait_idle()) return -1;
     I2C1->CR1 |= I2C_CR1_START;
     if (wait_flag(&I2C1->SR1, I2C_SR1_SB)) return i2c_fail();
 
@@ -104,6 +119,7 @@ static int i2c_write_reg(uint8_t reg, uint8_t value)
 static int i2c_read_regs(uint8_t reg, uint8_t *buf, uint32_t len)
 {
     // Escreve o endereco do registrador
+    if (i2c_wait_idle()) return -1;
     I2C1->CR1 |= I2C_CR1_START;
     if (wait_flag(&I2C1->SR1, I2C_SR1_SB)) return i2c_fail();
 
@@ -147,8 +163,16 @@ int mpu_init(void)
 
     i2c_init();
 
+    mpu_addr = 0x68U;
+
     if (i2c_write_reg(REG_PWR_MGMT_1, 0x01U))     // acorda, clock do giroscopio X
-        return -1;
+    {
+        mpu_addr = 0x69U;
+        busy_delay_ms(1);
+
+        if (i2c_write_reg(REG_PWR_MGMT_1, 0x01U))
+            return -1;
+    }
 
     busy_delay_ms(50);
 
@@ -159,6 +183,11 @@ int mpu_init(void)
         return -1;
 
     return who;
+}
+
+int mpu_address(void)
+{
+    return mpu_addr;
 }
 
 int mpu_read_accel(mpu_raw_t *out)

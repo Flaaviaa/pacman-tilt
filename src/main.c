@@ -72,8 +72,6 @@ static void create_task(TaskFunction_t fn, const char *name, uint16_t stack,
 
 int main(void)
 {
-    board_check_dfu_request();
-
     // Ao sair do DFU o bootloader salta para ca sem reset: a memoria de
     // sistema ainda esta mapeada em 0x0 e o VTOR pode apontar para ela.
     // Garante que as interrupcoes usem a tabela de vetores deste programa.

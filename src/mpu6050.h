@@ -12,5 +12,8 @@ typedef struct
 // 0x70/0x72/0x98) ou -1 se o sensor nao respondeu.
 int mpu_init(void);
 
+// Endereco I2C em uso (0x68 ou 0x69)
+int mpu_address(void);
+
 // Le os tres eixos do acelerometro. Retorna 0 em caso de sucesso.
 int mpu_read_accel(mpu_raw_t *out);

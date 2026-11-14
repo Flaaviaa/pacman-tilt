@@ -215,8 +215,6 @@ void task_buttons(void *arg)
 // ---------------------------------------------------------------------------
 // USB CDC (TinyUSB) - logs e comandos simples
 // ---------------------------------------------------------------------------
-static volatile uint8_t dfu_request = 0;
-
 uint32_t tusb_time_millis_api(void)
 {
     return xTaskGetTickCount() * portTICK_PERIOD_MS;
@@ -230,16 +228,6 @@ void tusb_time_delay_ms_api(uint32_t ms)
 void OTG_FS_IRQHandler(void)
 {
     tusb_int_handler(0, true);
-}
-
-// Abrir a serial a 1200 baud reinicia a placa no bootloader DFU
-// (tools/upload.ps1 usa isso para gravar sem apertar BOOT0)
-void tud_cdc_line_coding_cb(uint8_t itf, cdc_line_coding_t const *coding)
-{
-    (void)itf;
-
-    if (coding->bit_rate == 1200U)
-        dfu_request = 1;
 }
 
 static void usb_gpio_init(void)
@@ -302,13 +290,8 @@ void task_usb(void *arg)
     {
         tud_task();
 
-        if (dfu_request)
-        {
-            vTaskDelay(pdMS_TO_TICKS(50));
-            board_reboot_to_dfu();
-        }
-
         uint8_t connected = tud_cdc_connected();
+
 
         if (connected && !was_connected)
             log_printf("Pac-Tilt ELF74 - digite h para ajuda\r\n");

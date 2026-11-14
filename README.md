@@ -40,19 +40,14 @@ já está em `lib/FreeRTOS` (V11.1.0) e a TinyUSB é baixada automaticamente.
 pio run
 ```
 
-**Primeira gravação** (placa ainda com outro firmware): coloque a BlackPill em modo DFU —
-segure **BOOT0**, aperte e solte **NRST**, solte **BOOT0** — e então:
+Para gravar, coloque a BlackPill em modo DFU — segure **BOOT0**, aperte e solte
+**NRST**, solte **BOOT0** — e então:
 
 ```bash
 pio run -t upload
 ```
 
-**Próximas gravações**: o firmware reinicia sozinho em DFU quando a serial é aberta a
-1200 baud, então basta:
-
-```bash
-powershell -ExecutionPolicy Bypass -File tools/upload.ps1
-```
+O firmware começa a rodar logo após a gravação (não precisa apertar NRST).
 
 Logs (estado do jogo, IMU, botões) pela serial USB; no monitor digite `h` (ajuda),
 `t` (liga/desliga leituras da IMU) ou `s` (uso de pilha das tarefas e heap):
@@ -132,5 +127,5 @@ src/       main.c          criação das tarefas e objetos do RTOS
            maze.c          labirintos e níveis
            st7789.c, mpu6050.c, buttons.c, board.c, clock.c, font5x7.c
 lib/FreeRTOS  kernel V11.1.0 (port GCC/ARM_CM4F, heap_4)
-tools/     check_mazes.py (valida labirintos), upload.ps1
+tools/     check_mazes.py (valida labirintos)
 ```
