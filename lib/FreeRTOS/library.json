@@ -1,0 +1,13 @@
+{
+  "name": "FreeRTOS-Kernel",
+  "version": "11.1.0",
+  "description": "FreeRTOS Kernel V11.1.0 (somente os arquivos usados: port GCC/ARM_CM4F + heap_4). FreeRTOSConfig.h fica em include/ do projeto.",
+  "license": "MIT",
+  "frameworks": "*",
+  "platforms": "*",
+  "build": {
+    "srcDir": "src",
+    "includeDir": "include",
+    "flags": ["-Iinclude"]
+  }
+}
