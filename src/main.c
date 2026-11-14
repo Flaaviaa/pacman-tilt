@@ -74,6 +74,16 @@ int main(void)
 {
     board_check_dfu_request();
 
+    // Ao sair do DFU o bootloader salta para ca sem reset: a memoria de
+    // sistema ainda esta mapeada em 0x0 e o VTOR pode apontar para ela.
+    // Garante que as interrupcoes usem a tabela de vetores deste programa.
+    RCC->APB2ENR |= RCC_APB2ENR_SYSCFGEN;
+    __DSB();
+    SYSCFG->MEMRMP = 0U;
+    SCB->VTOR = FLASH_BASE;
+    __DSB();
+    __ISB();
+
     clock_init();
     NVIC_SetPriorityGrouping(3U);   // 4 bits de preempcao, como o FreeRTOS espera
 
