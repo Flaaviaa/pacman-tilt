@@ -70,9 +70,9 @@ static int imu_init(void)
     xSemaphoreGive(m_game);
 
     if (who < 0)
-        log_printf("IMU: MPU6050 nao responde (PB6=SCL, PB7=SDA)\r\n");
+        log_printf("IMU: MPU6050 nao responde em 0x68 nem 0x69 (PB6=SCL, PB7=SDA)\r\n");
     else
-        log_printf("IMU: MPU6050 ok, WHO_AM_I=0x%02X\r\n", who);
+        log_printf("IMU: MPU6050 ok, endereco 0x%02X, WHO_AM_I=0x%02X\r\n", mpu_address(), who);
 
     return who >= 0;
 }
