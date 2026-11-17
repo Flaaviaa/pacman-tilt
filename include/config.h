@@ -26,8 +26,9 @@
 // Eixos do MPU6050: ajuste conforme a posicao do modulo na placa perfurada.
 // tilt_x > 0 deve mover o Pac-Man para a direita, tilt_y > 0 para baixo.
 // ---------------------------------------------------------------------------
-#define IMU_SWAP_XY  0
-#define IMU_INVERT_X 1
+// Medido na montagem: direita da tela = +Y do sensor, baixo da tela = +X
+#define IMU_SWAP_XY  1
+#define IMU_INVERT_X 0
 #define IMU_INVERT_Y 0
 
 // ---------------------------------------------------------------------------
