@@ -15,8 +15,20 @@
 #define LCD_W 240
 #define LCD_H 240
 
+#ifdef BOARD_PCB
+// Placa de circuito (hardware/): o display fica girado 180 graus em relacao a
+// protoboard e, para a trilha nao cruzar, DC e RES trocam de pino.
+#define LCD_PIN_DC   1U     // PB1
+#define LCD_PIN_RST  0U     // PB0
+#define LCD_MADCTL   0xC0U  // MX | MY: 180 graus
+#define LCD_Y_OFFSET 80     // em 180 graus a janela visivel e a das linhas 80..319
+#else
+#define LCD_PIN_DC   0U     // PB0
+#define LCD_PIN_RST  1U     // PB1
 // Rotacao da tela (MADCTL do ST7789): 0x00, 0x60, 0xC0 ou 0xA0
-#define LCD_MADCTL 0x00U
+#define LCD_MADCTL   0x00U
+#define LCD_Y_OFFSET 0
+#endif
 
 // Divisor do SPI1 (APB2 = 84 MHz). 1 -> /4 = 21 MHz.
 // Se a imagem sair com ruido (fios longos), troque para 2 (/8 = 10.5 MHz).

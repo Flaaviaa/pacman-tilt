@@ -7,8 +7,8 @@
 #define PIN_SCK  5U     // PA5  SPI1_SCK  (AF5)
 #define PIN_MOSI 7U     // PA7  SPI1_MOSI (AF5)
 #define PIN_CS   4U     // PA4
-#define PIN_DC   0U     // PB0
-#define PIN_RST  1U     // PB1
+#define PIN_DC   LCD_PIN_DC     // PB0 (protoboard) ou PB1 (placa)
+#define PIN_RST  LCD_PIN_RST    // PB1 (protoboard) ou PB0 (placa)
 #define PIN_BLK  10U    // PB10
 
 #define CS_LOW()   (GPIOA->BSRR = (1U << (PIN_CS + 16U)))
@@ -74,6 +74,8 @@ static void lcd_data(uint8_t d)
 
 static void lcd_window(int x, int y, int w, int h)
 {
+    y += LCD_Y_OFFSET;
+
     uint16_t x1 = (uint16_t)(x + w - 1);
     uint16_t y1 = (uint16_t)(y + h - 1);
 
