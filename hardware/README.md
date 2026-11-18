@@ -12,9 +12,9 @@ Projeto KiCad 8: abra `pacman-tilt.kicad_pro`.
 
 | Ref | Componente | Montagem |
 |---|---|---|
-| U1 | BlackPill STM32F411 | 2 barras fêmea 1×20, fileiras a 15,24 mm, **USB voltado para baixo** |
-| J1 | Display ST7789 1,3" 240×240 | barra fêmea 1×7 na borda direita do módulo |
-| J2 | MPU6050 (GY-521) | barra fêmea 1×8 |
+| U1 | BlackPill STM32F411 (55 × 20 mm) | 2 barras fêmea 1×20, fileiras a 15,24 mm, **USB voltado para baixo** |
+| J1 | Display ST7789 1,3" 240×240 (39 × 27 mm) | barra fêmea 1×7 na borda de 27 mm, à direita do módulo |
+| J2 | MPU6050 (GY-521, 15 × 20 mm) | barra fêmea 1×8 |
 | SW1 | Botão B (pausa) — PB13 | tátil 12 × 12 mm |
 | SW2 | Botão A (confirma) — PB12 | tátil 12 × 12 mm |
 
@@ -32,6 +32,6 @@ Se a imagem aparecer de cabeça para baixo, troque `LCD_MADCTL` e `LCD_Y_OFFSET`
 
 ## Antes de fabricar
 
-- **Meça seus módulos.** Os contornos do display (31,6 × 39 mm) e do MPU (15,6 × 21,2 mm) são medidas típicas; o que importa para a placa são as posições dos furos. Confira na sua peça se a barra do display fica na borda maior.
+- **Medidas dos módulos:** display 39 × 27 mm, BlackPill 55 × 20 mm e MPU6050 15 × 20 mm. O que define a placa são as posições dos furos das barras de pinos; os contornos servem para mostrar o espaço ocupado.
 - **Gere a placa pelo script:** `python hardware/gen_kicad.py` recria o esquemático, a placa e a prévia, e confere folgas e conectividade. Edite o script, não os arquivos gerados, se quiser mudar posições.
 - No KiCad, rode **Inspecionar → Verificador de Regras (DRC)** antes de gerar os Gerbers ou imprimir a máscara para transferência térmica.

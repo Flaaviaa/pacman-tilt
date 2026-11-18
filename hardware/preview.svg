@@ -1,12 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="-20 -20 1000.0 600.0">
 <rect x="-20" y="-20" width="1000.0" height="600.0" fill="#fff"/>
 <rect x="0" y="0" width="960.0" height="560.0" fill="#1d5c2e" stroke="#000" stroke-width="2"/>
-<rect x="431.04" y="61.04" width="167.99999999999994" height="424.0" fill="none" stroke="#eee" stroke-width="2" stroke-dasharray="6 4"/>
-<text x="437.04" y="79.03999999999999" fill="#eee" font-size="16" font-family="Arial">U1</text>
-<rect x="83.2" y="147.52" width="252.8" height="312.0" fill="none" stroke="#eee" stroke-width="2" stroke-dasharray="6 4"/>
-<text x="89.2" y="165.52" fill="#eee" font-size="16" font-family="Arial">J1</text>
-<rect x="669.6" y="66.32" width="124.79999999999995" height="169.6" fill="none" stroke="#eee" stroke-width="2" stroke-dasharray="6 4"/>
-<text x="675.6" y="84.32" fill="#eee" font-size="16" font-family="Arial">J2</text>
+<rect x="435.04" y="53.04" width="159.99999999999994" height="440.0" fill="none" stroke="#eee" stroke-width="2" stroke-dasharray="6 4"/>
+<text x="441.04" y="71.03999999999999" fill="#eee" font-size="16" font-family="Arial">U1</text>
+<rect x="24.0" y="195.52" width="312.0" height="215.99999999999997" fill="none" stroke="#eee" stroke-width="2" stroke-dasharray="6 4"/>
+<text x="30.0" y="213.52" fill="#eee" font-size="16" font-family="Arial">J1</text>
+<rect x="669.6" y="71.12" width="120.0" height="160.0" fill="none" stroke="#eee" stroke-width="2" stroke-dasharray="6 4"/>
+<text x="675.6" y="89.12" fill="#eee" font-size="16" font-family="Arial">J2</text>
 <rect x="656.0" y="440.0" width="96.0" height="96.0" fill="none" stroke="#eee" stroke-width="2" stroke-dasharray="6 4"/>
 <text x="662.0" y="458.0" fill="#eee" font-size="16" font-family="Arial">SW1</text>
 <rect x="784.0" y="440.0" width="96.0" height="96.0" fill="none" stroke="#eee" stroke-width="2" stroke-dasharray="6 4"/>
