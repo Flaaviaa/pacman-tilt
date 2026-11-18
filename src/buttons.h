@@ -7,7 +7,8 @@ typedef enum
     BTN_A = 0,      // PB12: confirmar / iniciar
     BTN_B,          // PB13: pausar / voltar
     BTN_KEY,        // PA0 (botao KEY da BlackPill): mesmo papel do A
-    BTN_COUNT
+    BTN_COUNT,
+    BTN_SKIP_LEVEL = BTN_COUNT  // evento especial: A + B juntos (pular nivel)
 } button_id_t;
 
 void buttons_init(void);

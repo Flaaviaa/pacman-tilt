@@ -207,6 +207,16 @@ void task_buttons(void *arg)
                 }
             }
 
+            // Atalho de demonstracao: A + B pressionados juntos pula de nivel
+            uint32_t combo = (1U << BTN_A) | (1U << BTN_B);
+
+            if ((candidate & combo) == combo && (stable & combo) != combo)
+            {
+                input_msg_t m = { BTN_SKIP_LEVEL };
+                xQueueSend(q_input, &m, 0);
+                log_printf("atalho A+B: pular nivel\r\n");
+            }
+
             stable = candidate;
         }
     }

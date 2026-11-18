@@ -64,6 +64,8 @@ pio device monitor
 3. Coma todas as pastilhas antes do tempo acabar. A pastilha grande deixa os fantasmas
    azuis por 7 s (dá para comê-los: +200).
 4. **B** pausa; na pausa, **A** continua e **B** volta ao menu.
+5. Atalho de demonstração: **A + B juntos** (durante o jogo ou na pausa) pula para o
+   próximo nível; no último nível vai para a tela de vitória.
 
 3 vidas. Três níveis: labirinto A com 2 fantasmas → labirinto B com 3 fantasmas mais
 rápidos → labirinto A com 4 fantasmas ainda mais rápidos e menos tempo.

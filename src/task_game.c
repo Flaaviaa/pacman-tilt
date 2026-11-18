@@ -50,6 +50,20 @@ static void handle_button(button_id_t b)
 {
     int confirm = (b == BTN_A || b == BTN_KEY);
 
+    // Atalho A + B: vai direto para o proximo nivel (ou vitoria no ultimo)
+    if (b == BTN_SKIP_LEVEL)
+    {
+        if (g_game.state == ST_READY || g_game.state == ST_PLAYING ||
+            g_game.state == ST_PAUSED || g_game.state == ST_DYING)
+        {
+            if (g_game.level + 1U < NUM_LEVELS)
+                start_level((uint8_t)(g_game.level + 1U));
+            else
+                set_state(ST_VICTORY, 0);
+        }
+        return;
+    }
+
     switch (g_game.state)
     {
     case ST_MENU:
