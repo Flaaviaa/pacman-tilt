@@ -425,6 +425,7 @@ static void draw_menu(void)
     draw_text_center(120, "PARA MOVER", 2, C_WHITE, C_BLACK);
     draw_text_center(160, "A/KEY: JOGAR", 2, C_CYAN, C_BLACK);
     draw_text_center(182, "B: PAUSA", 2, C_CYAN, C_BLACK);
+    draw_text_center(204, "A+B JUNTOS: PROXIMO NIVEL", 1, C_YELLOW, C_BLACK);
 
     if (snap.imu_ok)
         draw_text_center(220, "IMU OK", 1, C_GREEN, C_BLACK);
